@@ -1,5 +1,12 @@
+import LoginPage from './pages/LoginPage';
+import 'antd/dist/antd.min.css';
+
 function App() {
-  return <div className="App">Hello there</div>;
+  return (
+    <>
+      <LoginPage />
+    </>
+  );
 }
 
 export default App;
