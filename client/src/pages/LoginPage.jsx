@@ -5,18 +5,31 @@ const Img = styled.img`
   width: 100%;
 `;
 const TitleStyled = styled(Title)`
-  margin-left: 10rem;
-  padding-bottom: 2rem;
+  margin-left: 9rem;
+  padding-bottom: 1rem;
+  font-weight: bold;
+  font-size: 38px;
+  line-height: 0.23;
+`;
+const FormStyled = styled(Form)`
+  margin: 9rem;
+  padding: 40px 73px 22px 0px;
+  box-shadow: 8px 8px 17px 5px #ddd;
+  width: 66%;
+`;
+const ButtonStyled = styled(Button)`
+  padding: 0px 26px;
+  height: 39px;
+  border: none;
+  border-radius: 3px;
+  margin-top: 12px;
 `;
 const LoginPage = () => {
   return (
     <>
       <Row>
         <Col span={12}>
-          <Form
-            style={{
-              margin: '9rem',
-            }}
+          <FormStyled
             name="basic"
             labelCol={{
               span: 8,
@@ -29,7 +42,7 @@ const LoginPage = () => {
             }}
             autoComplete="off"
           >
-            <TitleStyled level={2}>Log in</TitleStyled>
+            <TitleStyled>Sing in</TitleStyled>
             <Form.Item
               label="Username"
               name="username"
@@ -57,25 +70,16 @@ const LoginPage = () => {
             </Form.Item>
 
             <Form.Item
-              name="remember"
-              valuePropName="checked"
-              wrapperCol={{
-                offset: 8,
-                span: 16,
-              }}
-            ></Form.Item>
-
-            <Form.Item
               wrapperCol={{
                 offset: 8,
                 span: 16,
               }}
             >
-              <Button type="primary" htmlType="submit">
-                Submit
-              </Button>
+              <ButtonStyled type="danger" htmlType="submit">
+                Sing in
+              </ButtonStyled>
             </Form.Item>
-          </Form>
+          </FormStyled>
         </Col>
         <Col span={12}>
           <Img src="https://later.com/images/img--waved__gradient.svg" />
