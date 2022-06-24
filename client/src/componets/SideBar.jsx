@@ -9,6 +9,7 @@ import {
   HeartTwoTone,
 } from '@ant-design/icons';
 import styled from 'styled-components';
+import SearchInput from './SearchInput';
 const { TabPane } = Tabs;
 
 const TabsSyled = styled(Tabs)`
@@ -17,6 +18,9 @@ const TabsSyled = styled(Tabs)`
     background: rgb(43, 45, 58);
     color: #fff;
     border: none;
+  }
+  .ant-tabs-tabpane {
+    padding-left: 1px !important;
   }
   .ant-tabs-tab:hover {
     color: #b6b6b6;
@@ -58,7 +62,7 @@ const SideBar = () => {
           }
           key="1"
         >
-          Chat Room
+          <SearchInput />
         </TabPane>
         <TabPane
           tab={
