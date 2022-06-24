@@ -2,7 +2,9 @@ import { Card, Input } from 'antd';
 import styled from 'styled-components';
 
 const CardStyled = styled(Card)`
-  background: #e2eef7;
+  background: #d1e3f0;
+  border: none;
+  border-radius: 0;
 `;
 const Searchinput = styled(Input)`
   border-radius: 5px;
@@ -14,15 +16,10 @@ const Searchinput = styled(Input)`
 `;
 
 const SearchInput = () => {
-  const onSearch = (value) => console.log(value);
   return (
     <>
       <CardStyled>
-        <Searchinput
-          placeholder="Find your friend"
-          onSearch={onSearch}
-          allowClear
-        />
+        <Searchinput placeholder="Find your friend" allowClear />
       </CardStyled>
     </>
   );

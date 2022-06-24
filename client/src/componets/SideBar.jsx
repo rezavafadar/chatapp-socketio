@@ -10,6 +10,7 @@ import {
 } from '@ant-design/icons';
 import styled from 'styled-components';
 import SearchInput from './SearchInput';
+import AllChat from './AllChat';
 const { TabPane } = Tabs;
 
 const TabsSyled = styled(Tabs)`
@@ -18,6 +19,7 @@ const TabsSyled = styled(Tabs)`
     background: rgb(43, 45, 58);
     color: #fff;
     border: none;
+    position: relative;
   }
   .ant-tabs-tabpane {
     padding-left: 1px !important;
@@ -33,11 +35,13 @@ const TabsSyled = styled(Tabs)`
   }
 `;
 const CardStyled = styled(Card)`
-  height: 8vh;
+  height: 10vh;
   background: #21232f;
   color: #fff;
   border: none;
   width: 164px;
+  position: absolute;
+  top: 43rem;
   border-radius: 0;
   .ant-card-body {
     padding-bottom: 0;
@@ -63,6 +67,7 @@ const SideBar = () => {
           key="1"
         >
           <SearchInput />
+          <AllChat />
         </TabPane>
         <TabPane
           tab={
