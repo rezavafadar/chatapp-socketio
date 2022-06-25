@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema<IUser>({
     required: false,
     picture: { type: String, required: false },
     bio: { type: String, required: false },
-    fullname: { type: String, required: true },
+    fullname: { type: String, required: false },
     username: { type: String, required: false, unique: true },
   },
 });

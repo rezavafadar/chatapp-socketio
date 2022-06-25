@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { UserController } from './controllers/user.controller';
+import { AuthController } from './controllers/auth.controller';
 import { getRouters } from '../libs/express-routing/index';
 
 export class ApiListener {
@@ -18,7 +18,7 @@ export class ApiListener {
   }
 
   initRoutes() {
-    this._app.use('/api', getRouters([UserController]));
+    this._app.use('/api', getRouters([AuthController]));
   }
 
   app(): express.Application {

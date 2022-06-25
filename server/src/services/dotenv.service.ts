@@ -5,6 +5,5 @@ export class DotEnvService {
 
   initialize() {
     dotenv.config({ path: this.path });
-    console.log('ENV Variables initialized!');
   }
 }

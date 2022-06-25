@@ -1,8 +1,9 @@
+import path from 'path';
+
 import { AppServer } from './server/server';
 import { ApiListener } from './api/api';
 import { SocketServer } from './socket/socket';
 import { DotEnvService } from './services/dotenv.service';
-import path from 'path';
 import { MongooseService } from './services/mongoose.service';
 
 const apiListener = new ApiListener();
