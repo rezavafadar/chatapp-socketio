@@ -1,6 +1,6 @@
-import { Handler } from "express";
+import { Handler } from 'express';
 
-import { MethodsEnum } from "../enums/methods.enum";
+import { MethodsEnum } from '../enums/methods.enum';
 
 export interface Route {
   path: string;

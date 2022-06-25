@@ -1,7 +1,7 @@
-import express, { Request, Response } from "express";
+import express from 'express';
 
-import { userController } from "./controllers/user.controller";
-import { getRouters } from "../libs/express-routing/index";
+import { UserController } from './controllers/user.controller';
+import { getRouters } from '../libs/express-routing/index';
 
 export class ApiListener {
   private readonly _app: express.Application;
@@ -18,11 +18,7 @@ export class ApiListener {
   }
 
   initRoutes() {
-    this._app.get("/test", (req: Request, res: Response) => {
-      res.status(200).json({ msg: "ok" });
-    });
-
-    this._app.use(getRouters([userController]));
+    this._app.use('/api', getRouters([UserController]));
   }
 
   app(): express.Application {

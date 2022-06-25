@@ -2,15 +2,22 @@
   "compilerOptions": {
     "target": "es5",
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    // "emitDecoratorMetadata": true,
     "module": "commonjs",
     "rootDir": "src",
     "outDir": "dist",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    // "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "allowJs": true
+    // "allowJs": true
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["node_modules/*", "src/types/*"]
+    }
   },
   "exclude": ["dist", "node_modules"]
 }
