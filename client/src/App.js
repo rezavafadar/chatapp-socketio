@@ -1,4 +1,4 @@
-import LoginPage from './pages/LoginPage';
+// import LoginPage from './pages/LoginPage';
 import 'antd/dist/antd.min.css';
 import HomePage from './pages/HomePage';
 

@@ -1,4 +1,4 @@
-import { Card, Space, Tabs } from 'antd';
+import { Avatar, Card, Divider, Space, Tabs, Typography } from 'antd';
 import {
   MessageOutlined,
   TeamOutlined,
@@ -7,6 +7,7 @@ import {
   LogoutOutlined,
   SmileTwoTone,
   HeartTwoTone,
+  UserOutlined,
 } from '@ant-design/icons';
 import styled from 'styled-components';
 import SearchInput from './SearchInput';
@@ -27,6 +28,9 @@ const TabsSyled = styled(Tabs)`
   .ant-tabs-tab:hover {
     color: #b6b6b6;
   }
+  .ant-tabs-tab {
+    margin-top: 5rem;
+  }
   .ant-tabs-ink-bar {
     background: #e44849;
   }
@@ -42,6 +46,20 @@ const CardStyled = styled(Card)`
   width: 164px;
   position: absolute;
   top: 43rem;
+  border-radius: 0;
+  .ant-card-body {
+    padding-bottom: 0;
+  }
+`;
+const Profile = styled(Card)`
+  height: 9vh;
+  background: rgb(43, 45, 58);
+  color: #fff;
+
+  border: none;
+  width: 164px;
+  position: absolute;
+  top: 0rem;
   border-radius: 0;
   .ant-card-body {
     padding-bottom: 0;
@@ -145,6 +163,18 @@ const SideBar = () => {
           <HeartTwoTone twoToneColor="#eb2f96" />
         </Space>
       </CardStyled>
+      <Profile>
+        <Space size="middle">
+          <Avatar
+            style={{ backgroundColor: '#87d068', marginLeft: -3 }}
+            icon={<UserOutlined />}
+          />
+          <Typography style={{ fontSize: 12, width: '118%', color: '#fff' }}>
+            User Name
+          </Typography>
+        </Space>
+        <Divider style={{ background: 'rgb(255 255 255 / 37%)' }} />
+      </Profile>
     </>
   );
 };
