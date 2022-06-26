@@ -1,6 +1,6 @@
 export interface IActivationCode {
   code: string;
-  // expireAt: Date;
+  expireAt: Date;
   identifier: string;
   createdAt?: Date;
 }

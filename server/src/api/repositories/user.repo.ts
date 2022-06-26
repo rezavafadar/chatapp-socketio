@@ -18,4 +18,15 @@ export class UserRepo {
       [method]: identifier,
     });
   }
+
+  updateUserById(id: string, data: Partial<IUser>) {
+    return this.userModel.updateOne(
+      {
+        _id: id,
+      },
+      {
+        $set: data,
+      },
+    );
+  }
 }

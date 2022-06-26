@@ -1,14 +1,17 @@
 import { model, Schema } from 'mongoose';
-import { IActivationCode } from '../interfaces/activationCode.interface';
+import { IActivationCode } from '../interfaces/activation-code.interface';
 
 const activationCodeSchema = new Schema<IActivationCode>({
   code: { type: String, requied: true },
   createdAt: {
     type: Date,
-    expires: '5m',
     default: Date.now(),
   },
   identifier: { type: String, required: true },
+  expireAt: {
+    type: Date,
+    required: true,
+  },
 });
 
 export const ActivationCodeModel = model<IActivationCode>(

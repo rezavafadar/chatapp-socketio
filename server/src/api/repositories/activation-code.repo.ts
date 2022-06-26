@@ -1,6 +1,6 @@
-import { ActivationCodeModel } from '../../schema/actiovationCode.schema';
+import { ActivationCodeModel } from '../../schema/actiovation-code.schema';
 import { Model } from 'mongoose';
-import { IActivationCode } from '../../interfaces/activationCode.interface';
+import { IActivationCode } from '../../interfaces/activation-code.interface';
 
 export class ActivationCodeRepo {
   private activationCodeModel: Model<IActivationCode>;
@@ -15,6 +15,12 @@ export class ActivationCodeRepo {
   findByIdentifier(identifier: string) {
     return this.activationCodeModel.findOne({
       identifier,
+    });
+  }
+
+  deleteActivationCodeById(id: string) {
+    return this.activationCodeModel.deleteOne({
+      _id: id,
     });
   }
 }

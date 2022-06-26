@@ -2,6 +2,7 @@ import express from 'express';
 
 import { AuthController } from './controllers/auth.controller';
 import { getRouters } from '../libs/express-routing/index';
+import { ExceptionHandlerMiddleware } from './middlewares/exception.middleware';
 
 export class ApiListener {
   private readonly _app: express.Application;
@@ -19,6 +20,7 @@ export class ApiListener {
 
   initRoutes() {
     this._app.use('/api', getRouters([AuthController]));
+    this._app.use(ExceptionHandlerMiddleware.globalErrorHandler);
   }
 
   app(): express.Application {

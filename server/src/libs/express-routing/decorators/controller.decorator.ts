@@ -3,13 +3,14 @@ import { Router } from 'express';
 
 import type { Route } from '../interfaces/route.interface';
 import { METADATA_KEYS } from '../constants/index';
+import wrapper from '../../../exception/exception.handler';
 
 function getRouter(routes: Route[], constructor: any, path: string) {
   const router = Router();
   const instance: any = new constructor();
 
   routes.forEach((route) => {
-    router[route.method](route.path, route.handler.bind(instance));
+    router[route.method](route.path, wrapper(route.handler.bind(instance)));
   });
 
   return Router().use(path, router);
