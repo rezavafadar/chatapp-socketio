@@ -1,9 +1,9 @@
 import express from 'express';
 import expressSession from 'express-session';
 
-import { AuthController } from './controllers/auth.controller';
+import { AuthController } from '../modules/auth/auth.controller';
 import { getRouters } from '../libs/express-routing/index';
-import { ExceptionHandlerMiddleware } from './middlewares/exception.middleware';
+import { ExceptionHandlerMiddleware } from '../middlewares/exception.middleware';
 
 export class ApiListener {
   private readonly _app: express.Application;

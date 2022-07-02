@@ -1,20 +1,15 @@
 import { Request, Response } from 'express';
 
-import { Controller, GET, POST } from '../../libs/express-routing';
+import { Controller, POST } from '../../libs/express-routing';
 import { UserRepo } from '../../repositories/user.repo';
-import { AuthService } from '../../modules/auth/auth.service';
-import { ActivationCodeRepo } from '../../repositories/activation-code.repo';
+import { AuthService } from './auth.service';
 import { EmailProducers } from '../../jobs/producers/email.producers';
 
 @Controller('/auth')
 export class AuthController {
   private readonly authService: AuthService;
   constructor() {
-    this.authService = new AuthService(
-      new UserRepo(),
-      new ActivationCodeRepo(),
-      new EmailProducers(),
-    );
+    this.authService = new AuthService(new UserRepo(), new EmailProducers());
   }
 
   @POST('/verify')

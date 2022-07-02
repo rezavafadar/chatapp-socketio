@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { ExceptionError } from '../../exception/exception.error';
+import { ExceptionError } from '../exception/exception.error';
 
 export class ExceptionHandlerMiddleware {
   static globalErrorHandler(

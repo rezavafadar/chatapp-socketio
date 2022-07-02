@@ -2,6 +2,7 @@ import { ExceptionError } from '../../exception/exception.error';
 import { VerifyOtpValidation, SubmitOtpValidation } from './auth.validation';
 import { messageService } from '../../services/messages.service';
 import { RESEND_TIME_ACTIVATION_CODE } from '../../constants';
+import { ActivationCodeRepo } from '../../repositories/activation-code.repo';
 
 import type { IUser } from '../../interfaces/user.interface';
 import type { UserRepo } from '../../repositories/user.repo';
@@ -9,7 +10,6 @@ import type {
   SubmitOTPInfo,
   VerifyOtpInfo,
 } from '../../interfaces/auth.interfaces';
-import type { ActivationCodeRepo } from '../../repositories/activation-code.repo';
 import type { EmailProducers } from '../../jobs/producers/email.producers';
 import { OtpStrategy } from './strategies/otp.strategy';
 
@@ -17,10 +17,9 @@ export class AuthService {
   private readonly otpStrategy: OtpStrategy;
   constructor(
     private readonly userRepo: UserRepo,
-    private readonly activationCodeRepo: ActivationCodeRepo,
     private readonly emailProducers: EmailProducers,
   ) {
-    this.otpStrategy = new OtpStrategy(this.activationCodeRepo);
+    this.otpStrategy = new OtpStrategy(new ActivationCodeRepo());
   }
 
   async verify(details: SubmitOTPInfo) {
