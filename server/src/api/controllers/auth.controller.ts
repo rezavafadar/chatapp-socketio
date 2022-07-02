@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 
-import { Controller, POST } from '../../libs/express-routing';
-import { UserRepo } from '../repositories/user.repo';
+import { Controller, GET, POST } from '../../libs/express-routing';
+import { UserRepo } from '../../repositories/user.repo';
 import { AuthService } from '../../modules/auth/auth.service';
-import { ActivationCodeRepo } from '../repositories/activation-code.repo';
+import { ActivationCodeRepo } from '../../repositories/activation-code.repo';
 import { EmailProducers } from '../../jobs/producers/email.producers';
 
 @Controller('/auth')
@@ -17,24 +17,27 @@ export class AuthController {
     );
   }
 
-  @POST('/submit')
+  @POST('/verify')
   async submit(req: Request, res: Response) {
-    const info = await this.authService.submitOtp({
+    const { resendTime, user } = await this.authService.verify({
       identifier: req.body.identifier,
       method: req.body.method,
     });
 
-    res.status(200).json({ message: 'Activation code cended for User!', info });
+    req.session.userId = user.id;
+    res
+      .status(200)
+      .json({ message: 'Activation code cended for User!', resendTime, user });
   }
 
-  @POST('/verify')
+  @POST('/verify/code')
   async verify(req: Request, res: Response) {
-    const { token } = await this.authService.verifyOtp({
+    const { user } = await this.authService.verifyCode({
       method: req.body.method,
       identifier: req.body.identifier,
       code: req.body.code,
     });
 
-    res.status(200).json({ message: 'Your account verified!', token });
+    res.status(200).json({ message: 'Your account verified!', user });
   }
 }

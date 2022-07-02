@@ -1,4 +1,5 @@
 import express from 'express';
+import expressSession from 'express-session';
 
 import { AuthController } from './controllers/auth.controller';
 import { getRouters } from '../libs/express-routing/index';
@@ -16,6 +17,16 @@ export class ApiListener {
   initMiddlewares(): void {
     this._app.use(express.urlencoded({ extended: false }));
     this._app.use(express.json());
+    this._app.use(
+      expressSession({
+        cookie: {
+          httpOnly: true,
+        },
+        secret: 'Test',
+        saveUninitialized: false,
+        resave: false,
+      }),
+    );
   }
 
   initRoutes() {

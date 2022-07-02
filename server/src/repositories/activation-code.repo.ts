@@ -1,6 +1,7 @@
-import { ActivationCodeModel } from '../../schema/actiovation-code.schema';
 import { Model } from 'mongoose';
-import { IActivationCode } from '../../interfaces/activation-code.interface';
+
+import { ActivationCodeModel } from '../schema/actiovation-code.schema';
+import { IActivationCode } from '../interfaces/activation-code.interface';
 
 export class ActivationCodeRepo {
   private activationCodeModel: Model<IActivationCode>;
@@ -12,9 +13,10 @@ export class ActivationCodeRepo {
     return this.activationCodeModel.create(data);
   }
 
-  findByIdentifier(identifier: string) {
+  findByIdentifierNotExpired(identifier: string) {
     return this.activationCodeModel.findOne({
       identifier,
+      expireAt: { $gt: new Date() },
     });
   }
 

@@ -1,7 +1,7 @@
-import { AuthMethodEnum } from '../../interfaces/auth.interfaces';
+import { AuthMethodEnum } from '../interfaces/auth.interfaces';
 import { Model } from 'mongoose';
-import { UserModel } from '../../schema/user.schema';
-import { IUser } from '../../interfaces/user.interface';
+import { UserModel } from '../schema/user.schema';
+import { IUser } from '../interfaces/user.interface';
 
 export class UserRepo {
   private userModel: Model<IUser>;
