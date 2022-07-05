@@ -1,12 +1,12 @@
-import LoginPage from './pages/LoginPage';
+// import LoginPage from './pages/LoginPage';
 import 'antd/dist/antd.min.css';
-import HoemPage from './pages/HoemPage';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
     <>
       {/* <LoginPage /> */}
-      <HoemPage />
+      <HomePage />
     </>
   );
 }

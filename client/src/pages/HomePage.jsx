@@ -2,7 +2,7 @@ import { Col, Row } from 'antd';
 import React from 'react';
 import SideBar from '../componets/SideBar';
 
-const HoemPage = () => {
+const HomePage = () => {
   return (
     <>
       <Row>
@@ -15,4 +15,4 @@ const HoemPage = () => {
   );
 };
 
-export default HoemPage;
+export default HomePage;
