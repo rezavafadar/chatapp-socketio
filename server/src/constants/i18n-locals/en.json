@@ -1,0 +1,13 @@
+{
+  "user.blocked.name": "You'r blocked!",
+  "user.blocked.message": "Your Account isn't available!",
+  "user.not.deined.name": "User isn't defined!",
+  "user.not.deined.message": "There's no user with this phone or email!",
+
+  "activation-code.exists.name": "Activation Exists!",
+  "activation-code.exists.message": "You already have an activation code! try later please!",
+  "activation-code.not.exists.name": "Activation Code Not Exists!",
+  "activation-code.not.exists.message": "Activation code isn't defined or expired!",
+  "activation-code.incorrect.name": "Activation code incorrect!",
+  "activation-code.incorrect.message": "This code is incorrect, don't repeat it, please!"
+}

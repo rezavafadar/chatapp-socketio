@@ -2,15 +2,19 @@
   "compilerOptions": {
     "target": "es5",
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "module": "commonjs",
     "rootDir": "src",
     "outDir": "dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
     "skipLibCheck": true,
-    "allowJs": true
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node"
   },
+  "ts-node": {
+    "files": true
+  },
+  "include": ["src", "index.d.ts"],
   "exclude": ["dist", "node_modules"]
 }

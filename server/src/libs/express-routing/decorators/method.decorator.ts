@@ -1,12 +1,13 @@
-import "reflect-metadata";
+import 'reflect-metadata';
 
-import { MethodsEnum } from "../enums/methods.enum";
-import { METADATA_KEYS } from "../constants/index";
-import { Route } from "../interfaces/route.interface";
+import type { Route } from '../interfaces/route.interface';
+
+import { MethodsEnum } from '../enums/methods.enum';
+import { METADATA_KEYS } from '../constants/index';
 
 function MethodFactory(method: MethodsEnum) {
   return (path: string) => {
-    return (target: Object, key: string) => {
+    return (target: any, key: string) => {
       const classConstructor = target.constructor;
       const routes: Route[] =
         Reflect.getMetadata(METADATA_KEYS.ROUTES, classConstructor) || [];

@@ -1,25 +1,28 @@
-import { Router } from "express";
-import "reflect-metadata";
+import 'reflect-metadata';
+import { Router } from 'express';
 
-import type { Route } from "../interfaces/route.interface";
-import { METADATA_KEYS } from "../constants/index";
+import type { Route } from '../interfaces/route.interface';
+import { METADATA_KEYS } from '../constants/index';
+import wrapper from '../../../exception/exception.handler';
+
+function getRouter(routes: Route[], constructor: any, path: string) {
+  const router = Router();
+  const instance: any = new constructor();
+
+  routes.forEach((route) => {
+    router[route.method](route.path, wrapper(route.handler.bind(instance)));
+  });
+
+  return Router().use(path, router);
+}
 
 export function Controller(path: string) {
   return (target: any) => {
-    Reflect.defineMetadata(METADATA_KEYS.IS_CONTROLLER, true, target.prototype);
+    Reflect.defineMetadata(METADATA_KEYS.IS_CONTROLLER, true, target);
 
-    const classConstructor = target.constructor;
     const routes: Route[] =
       Reflect.getMetadata(METADATA_KEYS.ROUTES, target) || [];
 
-    target.prototype.getRouter = () => {
-      const router = Router();
-
-      routes.forEach((route) => {
-        router[route.method](route.path, route.handler);
-      });
-
-      return Router().use(path, router);
-    };
+    target.prototype.router = getRouter(routes, target, path);
   };
 }
